@@ -14,13 +14,13 @@ impl From<f32> for KahanSum {
     }
 }
 
-impl AddAssign for KahanSum {
+impl AddAssign<f32> for KahanSum {
     fn add_assign(&mut self, rhs: f32) {
         self.add(rhs);
     }
 }
 
-impl Add for KahanSum {
+impl Add<f32> for KahanSum {
     type Output = Self;
 
     fn add(self, rhs: f32) -> Self::Output {
