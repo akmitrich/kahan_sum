@@ -1,7 +1,6 @@
-use std::ops::{AddAssign, Add};
+use std::ops::{Add, AddAssign};
 
 #[allow(unused, dead_code)]
-
 #[derive(Debug, Clone, Default)]
 pub struct KahanSum {
     sum: f32,
@@ -10,7 +9,10 @@ pub struct KahanSum {
 
 impl From<f32> for KahanSum {
     fn from(initial: f32) -> Self {
-        KahanSum { sum: initial, err: 0_f32 }
+        KahanSum {
+            sum: initial,
+            err: 0_f32,
+        }
     }
 }
 

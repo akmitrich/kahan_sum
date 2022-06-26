@@ -17,12 +17,26 @@ mod tests {
         assert_eq!(16777218., ks.get_sum());
         assert_eq!(0., ks.get_err());
     }
+    
     #[test]
     fn test_operator_overloads() {
         let mut ks = kahan::KahanSum::default() + 16777216_f32;
         assert_eq!(16777216., ks.get_sum());
         assert_eq!(0., ks.get_err());
         ks += 1.;
+        assert_eq!(16777216., ks.get_sum());
+        assert_eq!(-1., ks.get_err());
+        ks += 1.;
+        assert_eq!(16777218., ks.get_sum());
+        assert_eq!(0., ks.get_err());
+    }
+
+    #[test]
+    fn test_from() {
+        let ks = kahan::KahanSum::from(16777216_f32);
+        assert_eq!(16777216., ks.get_sum());
+        assert_eq!(0., ks.get_err());
+        let mut ks = ks + 1.;
         assert_eq!(16777216., ks.get_sum());
         assert_eq!(-1., ks.get_err());
         ks += 1.;
