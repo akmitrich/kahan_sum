@@ -20,4 +20,11 @@ impl KahanSum {
     pub fn get_err(&self) -> f32 {
         self.err
     }
+
+    pub fn add(&mut self, value: f32) {
+        let corrected = value - self.get_err();
+        let new_sum = self.get_sum() + corrected;
+        self.err = (new_sum - self.get_sum()) - corrected;
+        self.sum = new_sum;
+    }
 }
