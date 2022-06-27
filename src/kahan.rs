@@ -1,7 +1,7 @@
 use std::ops::{Add, AddAssign};
 
 #[allow(unused, dead_code)]
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq)]
 pub struct KahanSum {
     sum: f32,
     err: f32,
